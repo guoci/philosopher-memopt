@@ -513,8 +513,8 @@ func ProtXMLFilter(p id.ProtXML, targetFDR, pepProb, protProb float64, isPicked,
 	for i := range keys {
 
 		// for inspections
-		//f := uti.Round(scoreMap[keys[i]]*100, 5, 2)
-		//fmt.Println(keys[i], "\t", scoreMap[keys[i]], "\t", uti.ToFixed(scoreMap[keys[i]], 4), "\t", f)
+		f := uti.Round(scoreMap[keys[i]]*100, 5, 2)
+		fmt.Println(keys[i], "\t", scoreMap[keys[i]], "\t", uti.ToFixed(scoreMap[keys[i]], 4), "\t", f)
 		//fmt.Println(keys[i], "\t", scoreMap[keys[i]], "\t", uti.ToFixed(scoreMap[keys[i]], 4), "\t", f, "\t", targetFDR)
 
 		probArray = append(probArray, keys[i])
