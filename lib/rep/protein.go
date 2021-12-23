@@ -283,50 +283,136 @@ func (evi Evidence) MetaProteinReport(workspace, brand string, channels int, has
 	// verify if the structure has labels, if so, replace the original channel names by them.
 	if hasLabels {
 
-		var c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18 string
+		var labels [18]string
 
-		for _, i := range printSet {
-			if len(i.UniqueLabels.Channel1.CustomName) >= 1 {
-				c1 = i.UniqueLabels.Channel1.CustomName
-				c2 = i.UniqueLabels.Channel2.CustomName
-				c3 = i.UniqueLabels.Channel3.CustomName
-				c4 = i.UniqueLabels.Channel4.CustomName
-				c5 = i.UniqueLabels.Channel5.CustomName
-				c6 = i.UniqueLabels.Channel6.CustomName
-				c7 = i.UniqueLabels.Channel7.CustomName
-				c8 = i.UniqueLabels.Channel8.CustomName
-				c9 = i.UniqueLabels.Channel9.CustomName
-				c10 = i.UniqueLabels.Channel10.CustomName
-				c11 = i.UniqueLabels.Channel11.CustomName
-				c12 = i.UniqueLabels.Channel12.CustomName
-				c13 = i.UniqueLabels.Channel13.CustomName
-				c14 = i.UniqueLabels.Channel14.CustomName
-				c15 = i.UniqueLabels.Channel15.CustomName
-				c16 = i.UniqueLabels.Channel16.CustomName
-				c17 = i.UniqueLabels.Channel17.CustomName
-				c18 = i.UniqueLabels.Channel18.CustomName
-				break
-			}
+		if len(printSet[10].UniqueLabels.Channel1.CustomName) >= 1 {
+			labels[0] = printSet[10].UniqueLabels.Channel1.CustomName
+			labels[1] = printSet[10].UniqueLabels.Channel2.CustomName
+			labels[2] = printSet[10].UniqueLabels.Channel3.CustomName
+			labels[3] = printSet[10].UniqueLabels.Channel4.CustomName
+			labels[4] = printSet[10].UniqueLabels.Channel5.CustomName
+			labels[5] = printSet[10].UniqueLabels.Channel6.CustomName
+			labels[6] = printSet[10].UniqueLabels.Channel7.CustomName
+			labels[7] = printSet[10].UniqueLabels.Channel8.CustomName
+			labels[8] = printSet[10].UniqueLabels.Channel9.CustomName
+			labels[9] = printSet[10].UniqueLabels.Channel10.CustomName
+			labels[10] = printSet[10].UniqueLabels.Channel11.CustomName
+			labels[11] = printSet[10].UniqueLabels.Channel12.CustomName
+			labels[12] = printSet[10].UniqueLabels.Channel13.CustomName
+			labels[13] = printSet[10].UniqueLabels.Channel14.CustomName
+			labels[14] = printSet[10].UniqueLabels.Channel15.CustomName
+			labels[15] = printSet[10].UniqueLabels.Channel16.CustomName
+			labels[16] = printSet[10].UniqueLabels.Channel17.CustomName
+			labels[17] = printSet[10].UniqueLabels.Channel18.CustomName
 		}
 
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel1.Name, c1, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel2.Name, c2, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel3.Name, c3, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel4.Name, c4, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel5.Name, c5, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel6.Name, c6, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel7.Name, c7, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel8.Name, c8, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel9.Name, c9, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel10.Name, c10, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel11.Name, c11, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel12.Name, c12, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel13.Name, c13, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel14.Name, c14, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel15.Name, c15, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel16.Name, c16, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel17.Name, c17, -1)
-		header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel18.Name, c18, -1)
+		if labels[0] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel1.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel1.Name, labels[0], -1)
+		}
+
+		if labels[1] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel2.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel2.Name, labels[1], -1)
+		}
+
+		if labels[2] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel3.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel3.Name, labels[2], -1)
+		}
+
+		if labels[3] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel4.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel4.Name, labels[3], -1)
+		}
+
+		if labels[4] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel5.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel5.Name, labels[4], -1)
+		}
+
+		if labels[5] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel6.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel6.Name, labels[5], -1)
+		}
+
+		if labels[6] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel7.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel7.Name, labels[6], -1)
+		}
+
+		if labels[7] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel8.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel8.Name, labels[7], -1)
+		}
+
+		if labels[8] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel9.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel9.Name, labels[8], -1)
+		}
+
+		if labels[9] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel10.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel10.Name, labels[9], -1)
+		}
+
+		if labels[10] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel11.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel11.Name, labels[10], -1)
+		}
+
+		if labels[11] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel12.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel12.Name, labels[11], -1)
+		}
+
+		if labels[12] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel13.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel13.Name, labels[12], -1)
+		}
+
+		if labels[13] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel14.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel14.Name, labels[13], -1)
+		}
+
+		if labels[14] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel15.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel15.Name, labels[14], -1)
+		}
+
+		if labels[15] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel16.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel16.Name, labels[15], -1)
+		}
+
+		if labels[16] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel17.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel17.Name, labels[16], -1)
+		}
+
+		if labels[17] == "NA" {
+			header = strings.Replace(header, "\tChannel "+printSet[10].UniqueLabels.Channel18.Name, "", -1)
+		} else {
+			header = strings.Replace(header, "Channel "+printSet[10].UniqueLabels.Channel18.Name, labels[17], -1)
+		}
 	}
 
 	_, e = io.WriteString(file, header)
@@ -439,106 +525,311 @@ func (evi Evidence) MetaProteinReport(workspace, brand string, channels int, has
 
 		switch channels {
 		case 4:
-			line = fmt.Sprintf("%s\t%.4f\t%.4f\t%.4f\t%.4f",
-				line,
-				reportIntensities[0],
-				reportIntensities[1],
-				reportIntensities[2],
-				reportIntensities[3],
-			)
+
+			if i.UniqueLabels.Channel1.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[0])
+			}
+
+			if i.UniqueLabels.Channel2.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[1])
+			}
+
+			if i.UniqueLabels.Channel3.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[2])
+			}
+
+			if i.UniqueLabels.Channel4.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[3])
+			}
+
 		case 6:
-			line = fmt.Sprintf("%s\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f",
-				line,
-				reportIntensities[0],
-				reportIntensities[1],
-				reportIntensities[2],
-				reportIntensities[3],
-				reportIntensities[4],
-				reportIntensities[5],
-			)
+
+			if i.UniqueLabels.Channel1.CustomName != "NA" {
+				line = fmt.Sprintf("\t%.4f", reportIntensities[0])
+			}
+
+			if i.UniqueLabels.Channel2.CustomName != "NA" {
+				line = fmt.Sprintf("\t%.4f", reportIntensities[1])
+			}
+
+			if i.UniqueLabels.Channel5.CustomName != "NA" {
+				line = fmt.Sprintf("\t%.4f", reportIntensities[4])
+			}
+
+			if i.UniqueLabels.Channel6.CustomName != "NA" {
+				line = fmt.Sprintf("\t%.4f", reportIntensities[5])
+			}
+
+			if i.UniqueLabels.Channel9.CustomName != "NA" {
+				line = fmt.Sprintf("\t%.4f", reportIntensities[8])
+			}
+
+			if i.UniqueLabels.Channel10.CustomName != "NA" {
+				line = fmt.Sprintf("\t%.4f", reportIntensities[9])
+			}
+
 		case 8:
-			line = fmt.Sprintf("%s\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f",
-				line,
-				reportIntensities[0],
-				reportIntensities[1],
-				reportIntensities[2],
-				reportIntensities[3],
-				reportIntensities[4],
-				reportIntensities[5],
-				reportIntensities[6],
-				reportIntensities[7],
-			)
+
+			if i.UniqueLabels.Channel1.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[0])
+			}
+
+			if i.UniqueLabels.Channel2.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[1])
+			}
+
+			if i.UniqueLabels.Channel3.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[2])
+			}
+
+			if i.UniqueLabels.Channel4.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[3])
+			}
+
+			if i.UniqueLabels.Channel5.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[4])
+			}
+
+			if i.UniqueLabels.Channel6.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[5])
+			}
+
+			if i.UniqueLabels.Channel7.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[6])
+			}
+
+			if i.UniqueLabels.Channel8.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[7])
+			}
+
 		case 10:
-			line = fmt.Sprintf("%s\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f",
-				line,
-				reportIntensities[0],
-				reportIntensities[1],
-				reportIntensities[2],
-				reportIntensities[3],
-				reportIntensities[4],
-				reportIntensities[5],
-				reportIntensities[6],
-				reportIntensities[7],
-				reportIntensities[8],
-				reportIntensities[9],
-			)
+
+			if i.UniqueLabels.Channel1.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[0])
+			}
+
+			if i.UniqueLabels.Channel2.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[1])
+			}
+
+			if i.UniqueLabels.Channel3.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[2])
+			}
+
+			if i.UniqueLabels.Channel4.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[3])
+			}
+
+			if i.UniqueLabels.Channel5.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[4])
+			}
+
+			if i.UniqueLabels.Channel6.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[5])
+			}
+
+			if i.UniqueLabels.Channel7.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[6])
+			}
+
+			if i.UniqueLabels.Channel8.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[7])
+			}
+
+			if i.UniqueLabels.Channel9.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[8])
+			}
+
+			if i.UniqueLabels.Channel10.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[9])
+			}
+
 		case 11:
-			line = fmt.Sprintf("%s\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f",
-				line,
-				reportIntensities[0],
-				reportIntensities[1],
-				reportIntensities[2],
-				reportIntensities[3],
-				reportIntensities[4],
-				reportIntensities[5],
-				reportIntensities[6],
-				reportIntensities[7],
-				reportIntensities[8],
-				reportIntensities[9],
-				reportIntensities[10],
-			)
+
+			if i.UniqueLabels.Channel1.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[0])
+			}
+
+			if i.UniqueLabels.Channel2.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[1])
+			}
+
+			if i.UniqueLabels.Channel3.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[2])
+			}
+
+			if i.UniqueLabels.Channel4.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[3])
+			}
+
+			if i.UniqueLabels.Channel5.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[4])
+			}
+
+			if i.UniqueLabels.Channel6.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[5])
+			}
+
+			if i.UniqueLabels.Channel7.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[6])
+			}
+
+			if i.UniqueLabels.Channel8.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[7])
+			}
+
+			if i.UniqueLabels.Channel9.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[8])
+			}
+
+			if i.UniqueLabels.Channel10.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[9])
+			}
+
+			if i.UniqueLabels.Channel11.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[10])
+			}
+
 		case 16:
-			line = fmt.Sprintf("%s\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f",
-				line,
-				reportIntensities[0],
-				reportIntensities[1],
-				reportIntensities[2],
-				reportIntensities[3],
-				reportIntensities[4],
-				reportIntensities[5],
-				reportIntensities[6],
-				reportIntensities[7],
-				reportIntensities[8],
-				reportIntensities[9],
-				reportIntensities[10],
-				reportIntensities[11],
-				reportIntensities[12],
-				reportIntensities[13],
-				reportIntensities[14],
-				reportIntensities[15],
-			)
+
+			if i.UniqueLabels.Channel1.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[0])
+			}
+
+			if i.UniqueLabels.Channel2.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[1])
+			}
+
+			if i.UniqueLabels.Channel3.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[2])
+			}
+
+			if i.UniqueLabels.Channel4.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[3])
+			}
+
+			if i.UniqueLabels.Channel5.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[4])
+			}
+
+			if i.UniqueLabels.Channel6.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[5])
+			}
+
+			if i.UniqueLabels.Channel7.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[6])
+			}
+
+			if i.UniqueLabels.Channel8.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[7])
+			}
+
+			if i.UniqueLabels.Channel9.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[8])
+			}
+
+			if i.UniqueLabels.Channel10.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[9])
+			}
+
+			if i.UniqueLabels.Channel11.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[10])
+			}
+
+			if i.UniqueLabels.Channel12.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[11])
+			}
+
+			if i.UniqueLabels.Channel13.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[12])
+			}
+
+			if i.UniqueLabels.Channel14.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[13])
+			}
+
+			if i.UniqueLabels.Channel15.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[14])
+			}
+
+			if i.UniqueLabels.Channel16.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[15])
+			}
+
 		case 18:
-			line = fmt.Sprintf("%s\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f\t%.4f",
-				line,
-				reportIntensities[0],
-				reportIntensities[1],
-				reportIntensities[2],
-				reportIntensities[3],
-				reportIntensities[4],
-				reportIntensities[5],
-				reportIntensities[6],
-				reportIntensities[7],
-				reportIntensities[8],
-				reportIntensities[9],
-				reportIntensities[10],
-				reportIntensities[11],
-				reportIntensities[12],
-				reportIntensities[13],
-				reportIntensities[14],
-				reportIntensities[15],
-				reportIntensities[16],
-				reportIntensities[17],
-			)
+
+			if i.UniqueLabels.Channel1.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[0])
+			}
+
+			if i.UniqueLabels.Channel2.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[1])
+			}
+
+			if i.UniqueLabels.Channel3.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[2])
+			}
+
+			if i.UniqueLabels.Channel4.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[3])
+			}
+
+			if i.UniqueLabels.Channel5.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[4])
+			}
+
+			if i.UniqueLabels.Channel6.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[5])
+			}
+
+			if i.UniqueLabels.Channel7.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[6])
+			}
+
+			if i.UniqueLabels.Channel8.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[7])
+			}
+
+			if i.UniqueLabels.Channel9.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[8])
+			}
+
+			if i.UniqueLabels.Channel10.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[9])
+			}
+
+			if i.UniqueLabels.Channel11.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[10])
+			}
+
+			if i.UniqueLabels.Channel12.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[11])
+			}
+
+			if i.UniqueLabels.Channel13.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[12])
+			}
+
+			if i.UniqueLabels.Channel14.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[13])
+			}
+
+			if i.UniqueLabels.Channel15.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[14])
+			}
+
+			if i.UniqueLabels.Channel16.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[15])
+			}
+
+			if i.UniqueLabels.Channel17.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[16])
+			}
+
+			if i.UniqueLabels.Channel18.CustomName != "NA" {
+				line = fmt.Sprintf("%s\t%.4f", line, reportIntensities[17])
+			}
+
 		default:
 			header += ""
 		}
