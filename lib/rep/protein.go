@@ -169,10 +169,6 @@ func (evi *Evidence) AssembleProteinReport(pro id.ProtIDList, weight float64, de
 
 		}
 
-		// if strings.Contains(rep.ProteinName, "Q8WXG9") {
-		// 	spew.Dump(rep)
-		// }
-
 		list = append(list, rep)
 	}
 
