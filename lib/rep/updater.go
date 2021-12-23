@@ -63,12 +63,12 @@ func (evi *Evidence) UpdateIonStatus(decoyTag string) {
 
 			if j.IsUnique {
 				uniqueIons[j.IonForm] = true
-				uniquePeptides[j.Sequence] = i.PartHeader
+				uniquePeptides[j.Sequence] = i.ProteinName
 			}
 
 			if j.IsURazor {
-				razorIons[j.IonForm] = i.PartHeader
-				razorPeptides[j.Sequence] = i.PartHeader
+				razorIons[j.IonForm] = i.ProteinName
+				razorPeptides[j.Sequence] = i.ProteinName
 			}
 		}
 	}
@@ -225,34 +225,6 @@ func (evi Evidence) SyncPSMToProteins(decoy string) Evidence {
 	var newPeptides PeptideEvidenceList
 	var newProteins ProteinEvidenceList
 
-	for _, i := range evi.Proteins {
-		proteinIndex[i.PartHeader] = 0
-	}
-
-	// for _, i := range evi.PSM {
-	// 	_, ok := proteinIndex[i.Protein]
-	// 	if ok {
-	// 		newPSM = append(newPSM, i)
-	// 	}
-	// }
-	// evi.PSM = newPSM
-
-	// for _, i := range evi.Ions {
-	// 	_, ok := proteinIndex[i.Protein]
-	// 	if ok {
-	// 		newIons = append(newIons, i)
-	// 	}
-	// }
-	// evi.Ions = newIons
-
-	// for _, i := range evi.Peptides {
-	// 	_, ok := proteinIndex[i.Protein]
-	// 	if ok {
-	// 		newPeptides = append(newPeptides, i)
-	// 	}
-	// }
-	// evi.Peptides = newPeptides
-
 	for _, i := range evi.PSM {
 		//if !i.IsDecoy {
 
@@ -338,7 +310,6 @@ func (evi Evidence) SyncPSMToProteins(decoy string) Evidence {
 		}
 	}
 
-	proteinIndex = make(map[string]uint8)
 	for _, i := range evi.Proteins {
 		if len(i.SupportingSpectra) > 0 {
 			proteinIndex[i.PartHeader] = 0
@@ -626,7 +597,7 @@ func (evi *Evidence) UpdateSupportingSpectra() {
 
 	for i := range evi.Proteins {
 
-		v, ok := ptSupSpec[evi.Proteins[i].PartHeader]
+		v, ok := ptSupSpec[evi.Proteins[i].ProteinName]
 		if ok {
 			for _, j := range v {
 				evi.Proteins[i].SupportingSpectra[j] = 0
@@ -651,21 +622,21 @@ func (evi *Evidence) UpdateSupportingSpectra() {
 
 		}
 
-		vTP, okTP := totalPeptides[evi.Proteins[i].PartHeader]
+		vTP, okTP := totalPeptides[evi.Proteins[i].ProteinName]
 		if okTP {
 			for _, j := range vTP {
 				evi.Proteins[i].TotalPeptides[j]++
 			}
 		}
 
-		vuP, okuP := uniquePeptides[evi.Proteins[i].PartHeader]
+		vuP, okuP := uniquePeptides[evi.Proteins[i].ProteinName]
 		if okuP {
 			for _, j := range vuP {
 				evi.Proteins[i].UniquePeptides[j]++
 			}
 		}
 
-		vRP, okRP := razorPeptides[evi.Proteins[i].PartHeader]
+		vRP, okRP := razorPeptides[evi.Proteins[i].ProteinName]
 		if okRP {
 			for _, j := range vRP {
 				evi.Proteins[i].URazorPeptides[j]++
