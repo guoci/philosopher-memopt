@@ -1,8 +1,6 @@
 ### Added
 
-
 ### Changed
-- Added the parsing rules from the Prophets to the protein description.
 
 ### Fixed
-
+- FIxed the 'RemoveAll() error when running the pipeline
