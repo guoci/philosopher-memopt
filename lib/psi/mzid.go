@@ -223,8 +223,8 @@ type Modification struct {
 // by another (amino acid change)
 type SubstitutionModification struct {
 	XMLName               xml.Name `xml:"SubstitutionModification"`
-	AvgMassDelta          float64  `xml:"avgMassDelta,attr,omitempty"`
 	Location              int      `xml:"location,attr,omitempty"`
+	AvgMassDelta          float64  `xml:"avgMassDelta,attr,omitempty"`
 	MonoisotopicMassDelta float64  `xml:"monoisotopicMassDelta,attr,omitempty"`
 	OriginalResidue       string   `xml:"originalResidue,attr,omitempty"`
 	ReplacementResidue    string   `xml:"replacementResidue,attr,omitempty"`
@@ -236,7 +236,6 @@ type SubstitutionModification struct {
 type PeptideEvidence struct {
 	XMLName             xml.Name    `xml:"PeptideEvidence"`
 	DBSequenceRef       string      `xml:"dBSequence_ref,attr,omitempty"`
-	End                 int         `xml:"end,attr,omitempty"`
 	Frame               string      `xml:"frame,attr,omitempty"`
 	ID                  string      `xml:"id,attr,omitempty"`
 	IsDecoy             string      `xml:"isDecoy,attr,omitempty"`
@@ -246,6 +245,7 @@ type PeptideEvidence struct {
 	Pre                 string      `xml:"pre,attr,omitempty"`
 	Start               string      `xml:"start,attr,omitempty"`
 	TranslationTableRef string      `xml:"translationTable_ref,attr,omitempty"`
+	End                 int         `xml:"end,attr,omitempty"`
 	CVParam             []CVParam   `xml:"cvParam"`
 	UserParam           []UserParam `xml:"userParam"`
 }
@@ -379,8 +379,8 @@ type ModificationParams struct {
 type SearchModification struct {
 	XMLName          xml.Name           `xml:"SearchModification"`
 	FixedMod         string             `xml:"fixedMod,attr,omitempty"`
-	MassDelta        float64            `xml:"massDelta,attr,omitempty"`
 	Residues         string             `xml:"residues,attr,omitempty"`
+	MassDelta        float64            `xml:"massDelta,attr,omitempty"`
 	SpecificityRules []SpecificityRules `xml:"SpecificityRules"`
 	CVParam          []CVParam          `xml:"cvParam"`
 }
@@ -409,10 +409,10 @@ type Enzyme struct {
 	XMLName         xml.Name   `xml:"Enzyme"`
 	CTermGain       string     `xml:"cTermGain,attr,omitempty"`
 	ID              string     `xml:"id,attr,omitempty"`
-	MinDistance     int        `xml:"minDistance,attr,omitempty"`
-	MissedCleavages int        `xml:"missedCleavages,attr,omitempty"`
 	NTermGain       string     `xml:"nTermGain,attr,omitempty"`
 	Name            string     `xml:"name,attr,omitempty"`
+	MinDistance     int        `xml:"minDistance,attr,omitempty"`
+	MissedCleavages int        `xml:"missedCleavages,attr,omitempty"`
 	SemiSpecific    bool       `xml:"semiSpecific,attr,omitempty"`
 	SiteRegexp      SiteRegexp `xml:"SiteRegexp"`
 	EnzymeName      EnzymeName `xml:"EnzymeName"`
@@ -435,8 +435,8 @@ type EnzymeName struct {
 type MassTable struct {
 	XMLName          xml.Name           `xml:"MassTable"`
 	ID               string             `xml:"id,attr,omitempty"`
-	MSLevel          []int              `xml:"msLevel,attr,omitempty"`
 	Name             string             `xml:"Name,attr,omitempty"`
+	MSLevel          []int              `xml:"msLevel,attr,omitempty"`
 	Residue          []Residue          `xml:"Residue"`
 	AmbiguousResidue []AmbiguousResidue `xml:"AmbiguousResidue"`
 	CVParam          []CVParam          `xml:"cvParam"`
@@ -563,10 +563,10 @@ type SearchDatabase struct {
 	ID                          string                      `xml:"id,attr,omitempty"`
 	Location                    string                      `xml:"location,attr,omitempty"`
 	Name                        string                      `xml:"name,attr,omitempty"`
-	NumDatabaseSequences        int                         `xml:"numDatabaseSequences,attr,omitempty"`
 	NumResidues                 string                      `xml:"numResidues,attr,omitempty"`
 	ReleaseDate                 string                      `xml:"releaseDate,attr,omitempty"`
 	Version                     string                      `xml:"version,attr,omitempty"`
+	NumDatabaseSequences        int                         `xml:"numDatabaseSequences,attr,omitempty"`
 	ExternalFormatDocumentation ExternalFormatDocumentation `xml:"ExternalFormatDocumentation"`
 	FileFormat                  FileFormat                  `xml:"FileFormat"`
 	DatabaseName                DatabaseName                `xml:"DatabaseName"`
@@ -673,17 +673,17 @@ type SpectrumIdentificationResult struct {
 // sequences
 type SpectrumIdentificationItem struct {
 	XMLName                  xml.Name             `xml:"SpectrumIdentificationItem"`
-	CalculatedMassToCharge   float64              `xml:"calculatedMassToCharge,attr,omitempty"`
-	CalculatedPI             float64              `xml:"calculatedPI,attr,omitempty"`
-	ChargeState              uint8                `xml:"chargeState,attr,omitempty"`
-	ExperimentalMassToCharge float64              `xml:"experimentalMassToCharge,attr,omitempty"`
 	ID                       string               `xml:"id,attr,omitempty"`
 	MassTableRef             string               `xml:"massTable_ref,attr,omitempty"`
 	Name                     string               `xml:"name,attr,omitempty"`
 	PassThreshold            string               `xml:"passThreshold,attr,omitempty"`
 	PeptideRef               string               `xml:"peptide_ref,attr,omitempty"`
-	Rank                     uint8                `xml:"rank,attr,omitempty"`
 	SampleRef                string               `xml:"sample_ref,attr,omitempty"`
+	ChargeState              uint8                `xml:"chargeState,attr,omitempty"`
+	Rank                     uint8                `xml:"rank,attr,omitempty"`
+	CalculatedMassToCharge   float64              `xml:"calculatedMassToCharge,attr,omitempty"`
+	CalculatedPI             float64              `xml:"calculatedPI,attr,omitempty"`
+	ExperimentalMassToCharge float64              `xml:"experimentalMassToCharge,attr,omitempty"`
 	PeptideEvidenceRef       []PeptideEvidenceRef `xml:"PeptideEvidenceRef"`
 	Fragmentation            Fragmentation        `xml:"Fragmentation"`
 	CVParam                  []CVParam            `xml:"cvParam"`

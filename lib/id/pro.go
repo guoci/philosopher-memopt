@@ -25,8 +25,8 @@ import (
 type ProtXML struct {
 	FileName   string
 	DecoyTag   string
-	Groups     GroupList
 	RunOptions string
+	Groups     GroupList
 }
 
 // GroupIdentification tag
@@ -42,37 +42,37 @@ type ProteinIdentification struct {
 	GroupSiblingID           string
 	ProteinName              string
 	Description              string
-	UniqueStrippedPeptides   []string
 	Length                   string
+	UniqueStrippedPeptides   []string
+	IndistinguishableProtein []string
 	PercentCoverage          float32
 	PctSpectrumIDs           float32
 	GroupProbability         float64
 	Probability              float64
 	Confidence               float64
 	TopPepProb               float64
-	IndistinguishableProtein []string
 	TotalNumberPeptides      int
-	PeptideIons              []PeptideIonIdentification
-	HasRazor                 bool
 	Picked                   int
+	HasRazor                 bool
+	PeptideIons              []PeptideIonIdentification
 }
 
 // PeptideIonIdentification struct
 type PeptideIonIdentification struct {
 	PeptideSequence          string
 	ModifiedPeptide          string
+	PeptideParentProtein     []string
 	Charge                   uint8
+	NumberOfInstances        int
+	SharedParentProteins     int
+	Razor                    int
+	NumberOfEnzymaticTermini uint8
 	InitialProbability       float64
 	Weight                   float64
 	GroupWeight              float64
 	CalcNeutralPepMass       float64
-	NumberOfEnzymaticTermini uint8
-	NumberOfInstances        int
-	SharedParentProteins     int
-	Razor                    int
 	IsNondegenerateEvidence  bool
 	IsUnique                 bool
-	PeptideParentProtein     []string
 	Labels                   iso.Labels
 	Modifications            mod.Modifications
 }

@@ -270,19 +270,19 @@ type SpectrumList struct {
 
 // Spectrum tag
 type Spectrum struct {
-	XMLName             xml.Name            `xml:"spectrum"`
-	DataProcessingRef   string              `xml:"dataProcessingRef,attr"`
-	DefaultArrayLength  float64             `xml:"defaultArrayLength,attr"`
-	ID                  string              `xml:"id,attr"`
-	Index               string              `xml:"index,attr"`
-	SourceFileRef       string              `xml:"sourceFileRef,attr"`
-	SpotID              string              `xml:"spotID,attr"`
+	XMLName             xml.Name `xml:"spectrum"`
+	DataProcessingRef   string   `xml:"dataProcessingRef,attr"`
+	ID                  string   `xml:"id,attr"`
+	Index               string   `xml:"index,attr"`
+	SourceFileRef       string   `xml:"sourceFileRef,attr"`
+	SpotID              string   `xml:"spotID,attr"`
+	DefaultArrayLength  float64  `xml:"defaultArrayLength,attr"`
+	Peaks               []float64
+	Intensities         []float64
 	CVParam             []CVParam           `xml:"cvParam"`
 	ScanList            ScanList            `xml:"scanList"`
 	PrecursorList       PrecursorList       `xml:"precursorList"`
 	BinaryDataArrayList BinaryDataArrayList `xml:"binaryDataArrayList"`
-	Peaks               []float64
-	Intensities         []float64
 }
 
 // ScanList tag

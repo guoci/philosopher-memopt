@@ -21,8 +21,8 @@ func TestProtXML_MarkUniquePeptides(t *testing.T) {
 	type fields struct {
 		FileName   string
 		DecoyTag   string
-		Groups     GroupList
 		RunOptions string
+		Groups     GroupList
 	}
 	type args struct {
 		w float64

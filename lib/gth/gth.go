@@ -14,11 +14,11 @@ import (
 
 // Release information from GitHub
 type Release struct {
+	ID              int    `json:"id"`
 	URL             string `json:"url"`
 	AssetsURL       string `json:"assets_url"`
 	UploadURL       string `json:"upload_url"`
 	HTMLURL         string `json:"html_url"`
-	ID              int    `json:"id"`
 	TagName         string `json:"tag_name"`
 	TargetCommitish string `json:"target_commitish"`
 	Name            string `json:"name"`

@@ -33,9 +33,9 @@ type PepXML struct {
 	SpectraFile           string
 	SearchEngine          string
 	DecoyTag              string
-	SearchParameters      []spc.Parameter
 	Database              string
 	Prophet               string
+	SearchParameters      []spc.Parameter
 	Modifications         mod.Modifications
 	Models                []spc.DistributionPoint
 	PeptideIdentification PepIDList
