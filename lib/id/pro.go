@@ -39,6 +39,8 @@ type GroupIdentification struct {
 // ProteinIdentification struct
 type ProteinIdentification struct {
 	GroupNumber              uint32
+	TotalNumberPeptides      int
+	Picked                   int
 	GroupSiblingID           string
 	ProteinName              string
 	Description              string
@@ -51,22 +53,20 @@ type ProteinIdentification struct {
 	Probability              float64
 	Confidence               float64
 	TopPepProb               float64
-	TotalNumberPeptides      int
-	Picked                   int
 	HasRazor                 bool
 	PeptideIons              []PeptideIonIdentification
 }
 
 // PeptideIonIdentification struct
 type PeptideIonIdentification struct {
-	PeptideSequence          string
-	ModifiedPeptide          string
-	PeptideParentProtein     []string
 	Charge                   uint8
+	NumberOfEnzymaticTermini uint8
 	NumberOfInstances        int
 	SharedParentProteins     int
 	Razor                    int
-	NumberOfEnzymaticTermini uint8
+	PeptideSequence          string
+	ModifiedPeptide          string
+	PeptideParentProtein     []string
 	InitialProbability       float64
 	Weight                   float64
 	GroupWeight              float64

@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"philosopher/lib/ids"
 	"philosopher/lib/uti"
 
 	"philosopher/lib/msg"
@@ -43,40 +44,38 @@ type PepXML struct {
 
 // PeptideIdentification struct
 type PeptideIdentification struct {
-	Index                                uint32
-	Spectrum                             string
-	SpectrumFile                         string
-	Scan                                 int
-	Peptide                              string
-	Protein                              string
-	ModifiedPeptide                      string
-	CompesationVoltage                   string
-	AlternativeProteins                  map[string]int
 	AssumedCharge                        uint8
-	PrevAA                               string
-	NextAA                               string
 	HitRank                              uint8
 	MissedCleavages                      uint8
 	NumberTolTerm                        uint8
 	NumberOfEnzymaticTermini             uint8
+	IsRejected                           uint8
 	NumberTotalProteins                  uint16
 	TotalNumberIons                      uint16
 	NumberMatchedIons                    uint16
+	Index                                uint32
+	Scan                                 int
 	NumberofMissedCleavages              int
+	IsoMassD                             int
+	Spectrum                             string
+	SpectrumFile                         string
+	Peptide                              string
+	Protein                              string
+	ModifiedPeptide                      string
+	CompesationVoltage                   string
+	PrevAA                               string
+	NextAA                               string
+	LocalizationRange                    string
+	MSFragerLocalization                 string
+	MSFraggerLocalizationScoreWithPTM    string
+	MSFraggerLocalizationScoreWithoutPTM string
 	UncalibratedPrecursorNeutralMass     float64
 	PrecursorNeutralMass                 float64
 	PrecursorExpMass                     float64
 	RetentionTime                        float64
 	CalcNeutralPepMass                   float64
 	Massdiff                             float64
-	LocalizedPTMSites                    map[string]int
-	LocalizedPTMMassDiff                 map[string]string
-	LocalizationRange                    string
-	MSFragerLocalization                 string
-	MSFraggerLocalizationScoreWithPTM    string
-	MSFraggerLocalizationScoreWithoutPTM string
 	Probability                          float64
-	IsoMassD                             int
 	Expectation                          float64
 	Xcorr                                float64
 	DeltaCN                              float64
@@ -88,7 +87,9 @@ type PeptideIdentification struct {
 	DiscriminantValue                    float64
 	Intensity                            float64
 	IonMobility                          float64
-	IsRejected                           uint8
+	LocalizedPTMMassDiff                 map[string]string
+	AlternativeProteins                  map[string]int
+	LocalizedPTMSites                    map[string]int
 	Modifications                        mod.Modifications
 }
 
@@ -280,6 +281,12 @@ func ReadPepXMLInput(xmlFile, decoyTag, temp string, models bool) (PepIDList, st
 	}
 
 	for i := range files {
+
+		///
+		var x ids.PepXML
+		x.Read(i)
+		///
+
 		var p PepXML
 		p.DecoyTag = decoyTag
 		p.Read(i)

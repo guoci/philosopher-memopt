@@ -1,5 +1,5 @@
 # Philosopher pipeline configuration file
-# Version 4.1.1
+# Version 4.2.1
 #
 # The pipeline mode automates the processing done by Philosopher and other tools. First, check
 # the steps you want to execute in the commands section and change them to
